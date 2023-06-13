@@ -9,8 +9,13 @@ def main():
     bg_img = pg.image.load("ex01/fig/pg_bg.jpg")
     kk_img = pg.image.load("ex01/fig/3.png")
     kk_img = pg.transform.flip(kk_img,True,False)
+    rbg_img= pg.transform.flip(bg_img,True,False)
     kk = pg.transform.rotozoom(kk_img, 10, 1.0)
-    kkflip = [kk_img,kk]
+    kkflip = []
+    for i in range(10):
+        kkflip.append(pg.transform.rotozoom(kk_img, i, 1.0))
+    for i in range(9,1,-1):
+        kkflip.append(pg.transform.rotozoom(kk_img, i, 1.0))
     tmr = 0
     x=0
     while True:
@@ -19,13 +24,13 @@ def main():
         
         screen.blit(bg_img, [0-x, 0])
         screen.blit(bg_img, [1600-x, 0])
-        screen.blit(kkflip[tmr%2],[300,200])
+        screen.blit(kkflip[tmr%18],[300,200])
         pg.display.update()
         tmr += 1        
         x += 1
         if x>1600:
             x=0
-        clock.tick(500)
+        clock.tick(100)
 
 
 
