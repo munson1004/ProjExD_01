@@ -23,12 +23,13 @@ def main():
             if event.type == pg.QUIT: return
         
         screen.blit(bg_img, [0-x, 0])
-        screen.blit(bg_img, [1600-x, 0])
+        screen.blit(rbg_img, [1600-x, 0])
+        screen.blit(bg_img, [3200-x, 0])
         screen.blit(kkflip[tmr%18],[300,200])
         pg.display.update()
         tmr += 1        
         x += 1
-        if x>1600:
+        if x>3200:
             x=0
         clock.tick(100)
 
